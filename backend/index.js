@@ -123,7 +123,7 @@ app.post("/image-upload", upload.single("image"), async (req, res) => {
         .json({ error: true, message: "No image uploaded" });
     }
 
-    const imageUrl = `http://localhost:8000/uploads/${req.file.filename}`;
+    const imageUrl = `http://travelstory-4tq0.onrender.com/uploads/${req.file.filename}`;
 
     res.status(200).json({ imageUrl });
   } catch (error) {
@@ -357,7 +357,7 @@ app.get("/travel-stories/filter", authenticateToken, async (req, res) => {
       visitedDate: { $gte: start, $lte: end },
     }).sort({ isFavourite: -1 });
 
-    res.status(200).json({stories: filteredStories});
+    res.status(200).json({ stories: filteredStories });
   } catch (error) {
     res.status(500).json({ error: true, message: error.message });
   }
